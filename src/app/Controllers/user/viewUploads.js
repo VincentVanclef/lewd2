@@ -26,6 +26,7 @@ async function get(req, res) {
     }
 
     res.render("user", {
+        page: pageCount,
         menuItem: "view-uploads",
         uploads: uploads,
         count: count,
