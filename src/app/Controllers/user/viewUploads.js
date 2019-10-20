@@ -1,17 +1,17 @@
 import moment         from "moment";
-import { getUploads } from "../../Functions/User/getUploads";
+import { getUploadsByLimitAndOffset } from "../../Functions/User/getUploads";
 import { convertNumberToBestByteUnit } from "../../Functions/convertNumberToBestByteUnit";
 
 async function get(req, res) {
     
     const pageCount =
         req.params.page ? 
-            parseInt(req.body.page) :
+            parseInt(req.params.page) :
             1; 
 
     console.log(pageCount);
 
-    const uploads = await getUploads(res.locals.user.id);
+    const uploads = await getUploadsByLimitAndOffset(res.locals.user.id, 5, pageCount);
     let count = 0;
 
     // If there are dates then format them

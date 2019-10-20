@@ -1,9 +1,16 @@
 import { db } from "../../helpers/database";
 
+/**
+ * 
+ * @param {*} userId 
+ * @param {*} limit 
+ * @param {*} offset 
+ */
 async function getUploadsByLimitAndOffset(userId, limit, offset) {
     if (!userId) {
         return null;
     }
+
     const client = await db.connect();
 
     const uploads = await client.query(`SELECT
@@ -16,7 +23,7 @@ async function getUploadsByLimitAndOffset(userId, limit, offset) {
             virus, 
             passworded, 
             deletionkey,
-            (SELECT COUNT(id) FROM "Uploads" WHERE userid = 1) as "AmountOfUploads"
+            (SELECT COUNT(id) FROM "Uploads" WHERE userid = 1)::INT as "AmountOfUploads"
         FROM 
             "Uploads" 
         WHERE 
