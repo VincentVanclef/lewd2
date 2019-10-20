@@ -3,6 +3,14 @@ import { getUploads } from "../../Functions/User/getUploads";
 import { convertNumberToBestByteUnit } from "../../Functions/convertNumberToBestByteUnit";
 
 async function get(req, res) {
+    
+    const pageCount =
+        req.params.page ? 
+            parseInt(req.body.page) :
+            1; 
+
+    console.log(pageCount);
+
     const uploads = await getUploads(res.locals.user.id);
     let count = 0;
 

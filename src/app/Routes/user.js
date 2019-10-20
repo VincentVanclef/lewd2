@@ -17,6 +17,7 @@ router.post("/change-token", user.changeToken.validate,
                              user.changeToken.post);
 
 router.get("/view-uploads", user.viewUploads.get);
+router.get("/view-uploads/:page", user.viewUploads.get);
 
 router.post("/change-password", user.changePassword.validate, 
                                 user.changePassword.post);
