@@ -17,14 +17,11 @@ async function get(req, res) {
     const lastPageHit = 
         (pageNumber * amountOfUploadsToShow) > totalUploads; 
 
-    
     const pageCount =
         lastPageHit ? amountOfPages : pageNumber; 
     
-    
     const uploads =
         await getUploadsByLimitAndOffset(userId, amountOfUploadsToShow, pageCount);
-
 
     // If there are dates then format them
     if (uploads) {
