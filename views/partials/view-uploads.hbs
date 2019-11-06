@@ -2,7 +2,7 @@
     {{#if uploads}}
     <div class="columns">
         <div class="column">
-            <h2 class="title is-3">Showing <span id="upload-count">{{ count }}</span> uploads:</h2>
+            <h2 class="title is-3">Uploads:</h2>
         </div>
 
         <div class="column is-one-third">
@@ -53,15 +53,23 @@
     </table>
 
     <section class="columns is-gapless">
-        <section class="column is-1 is-offset-11">
-            <button class="button">
-                &lAarr;
-            </button>
-        </section>
-        <section class="column is-1 is-offset-1">
-            <button class="button">
-                &rAarr;
-            </button>
+        <section class="column is-3 is-offset-11 vertical-align-menu-text">
+            {{#if previousPage}}
+                <a href="/user/view-uploads/{{ previousPage }}">
+                    <button class="button">
+                        &lAarr;
+                    </button>
+                </a>
+            {{/if}}
+
+            <span>{{ page }} / {{ amountOfPages }}</span>
+
+
+            <a href="/user/view-uploads/{{ nextPage }}">
+                <button class="button">
+                    &rAarr;
+                </button>
+            </a>
         </section>
     </section> 
 

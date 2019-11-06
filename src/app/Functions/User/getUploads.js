@@ -23,7 +23,7 @@ async function getUploadsByLimitAndOffset(userId, limit, offset) {
             virus, 
             passworded, 
             deletionkey,
-            (SELECT COUNT(id) FROM "Uploads" WHERE userid = 1)::INT as "AmountOfUploads"
+            (SELECT COUNT(id) FROM "Uploads" WHERE userid = $1)::INT as "AmountOfUploads"
         FROM 
             "Uploads" 
         WHERE 
