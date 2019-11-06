@@ -1,11 +1,5 @@
 import { db } from "../../helpers/database";
 
-/**
- * 
- * @param {*} userId 
- * @param {*} limit 
- * @param {*} offset 
- */
 async function getUploadsByLimitAndOffset(userId, limit, offset) {
     if (!userId) {
         return null;
@@ -22,8 +16,7 @@ async function getUploadsByLimitAndOffset(userId, limit, offset) {
             duplicate, 
             virus, 
             passworded, 
-            deletionkey,
-            (SELECT COUNT(id) FROM "Uploads" WHERE userid = $1)::INT as "AmountOfUploads"
+            deletionkey
         FROM 
             "Uploads" 
         WHERE 
